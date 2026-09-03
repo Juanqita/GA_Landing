@@ -254,7 +254,15 @@ button { font-family: inherit; cursor: pointer; }
   .brand-sub,
   .tri-bar,
   .hero-scroll-cue,
-  .hero-scroll-cue svg {
+  .hero-scroll-cue svg,
+  .back-home,
+  .cta-dock,
+  .menu-header::before,
+  .menu-header-logo,
+  .menu-header-name,
+  .menu-header-tag,
+  .menu-header-rule,
+  .menu-jump-wrap {
     animation: none;
     opacity: 1;
     transform: none;
@@ -397,6 +405,20 @@ button { font-family: inherit; cursor: pointer; }
 
 .menu-page { background: var(--page-bg); color: var(--page-text); min-height: 100vh; }
 
+@keyframes chrome-drop {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes header-glow-in {
+  from { opacity: 0; transform: scale(.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes logo-pop {
+  0%   { opacity: 0; transform: scale(.72); filter: blur(6px); }
+  70%  { opacity: 1; transform: scale(1.04); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
 .back-home {
   position: fixed;
   top: 22px;
@@ -415,6 +437,7 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
   box-shadow: 0 10px 24px rgba(0,0,0,.25);
   transition: transform .3s var(--ease);
+  animation: chrome-drop .7s var(--ease) both .1s;
 }
 .back-home:hover { transform: translateY(-2px); }
 
@@ -425,6 +448,7 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 50;
   display: flex;
   gap: 10px;
+  animation: chrome-drop .7s var(--ease) both .22s;
 }
 .cta-btn {
   display: inline-flex;
@@ -451,6 +475,18 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
   background: var(--page-header-bg);
 }
+.menu-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 48% 42% at 50% 26%, var(--page-accent-soft), transparent 70%);
+  opacity: 0;
+  animation: header-glow-in 1.3s var(--ease) both .05s;
+  pointer-events: none;
+}
+.menu-header > * { position: relative; z-index: 1; }
+
 .menu-header-logo {
   width: 116px;
   height: 116px;
@@ -460,6 +496,7 @@ button { font-family: inherit; cursor: pointer; }
   background: #fff;
   border: 4px solid rgba(255,255,255,.9);
   box-shadow: 0 16px 40px rgba(0,0,0,.28);
+  animation: logo-pop .8s var(--ease) both .15s;
 }
 .menu-header-logo img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -471,6 +508,7 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: -0.01em;
   line-height: 1;
   color: var(--page-accent);
+  animation: reveal-up .9s var(--ease) both .32s;
 }
 .menu-header-tag {
   margin-top: 12px;
@@ -478,12 +516,15 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--page-text-soft);
+  animation: reveal-up .8s var(--ease) both .55s;
 }
 .menu-header-rule {
   width: 100%;
   height: 3px;
   margin-top: 44px;
   background: var(--page-accent);
+  transform-origin: center;
+  animation: tri-reveal .8s var(--ease) both .72s;
 }
 
 .menu-jump {
@@ -500,7 +541,10 @@ button { font-family: inherit; cursor: pointer; }
   transition: background .3s var(--ease), color .3s var(--ease);
 }
 .menu-jump:hover { background: var(--page-accent); color: var(--page-header-bg); }
-.menu-jump-wrap { text-align: center; }
+.menu-jump-wrap {
+  text-align: center;
+  animation: reveal-up .8s var(--ease) both .9s;
+}
 
 .menu-body { padding: 90px 24px 140px; }
 .menu-body-inner { max-width: 920px; margin: 0 auto; }
@@ -637,6 +681,7 @@ button { font-family: inherit; cursor: pointer; }
   --page-bg: #faf6ec;
   --page-header-bg: radial-gradient(ellipse 80% 60% at 50% 0%, #fdeceb 0%, #faf6ec 65%);
   --page-accent: #b3231c;
+  --page-accent-soft: rgba(179, 35, 28, .22);
   --page-text: #241110;
   --page-text-soft: #6b5a55;
   --page-rule: #e7ded0;
@@ -647,6 +692,7 @@ button { font-family: inherit; cursor: pointer; }
   --page-bg: #1c0836;
   --page-header-bg: linear-gradient(180deg, #3a1163 0%, #1c0836 100%);
   --page-accent: #f2b705;
+  --page-accent-soft: rgba(242, 183, 5, .28);
   --page-text: #f4ecff;
   --page-text-soft: #c4aee0;
   --page-rule: rgba(242,183,5,.22);
@@ -658,6 +704,7 @@ button { font-family: inherit; cursor: pointer; }
   --page-bg: #f7ecd2;
   --page-header-bg: radial-gradient(ellipse 80% 60% at 50% 0%, #fff6df 0%, #f7ecd2 65%);
   --page-accent: #a35a1e;
+  --page-accent-soft: rgba(163, 90, 30, .22);
   --page-text: #2c1c0c;
   --page-text-soft: #7a6448;
   --page-rule: #e8d7ac;
