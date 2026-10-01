@@ -1,0 +1,125 @@
+{
+  "_doc": "Recortes provisionales (en fracción 0-1 del ancho/alto: [izq, arriba, der, abajo]) para quitar textos y logos de las piezas de redes. Cuando reemplaces una foto por su versión limpia, pon \"crop\": null y vuelve a correr: python tools/build_collage.py",
+  "malavida": {
+    "hamburguesa": {
+      "crop": [
+        0.167,
+        0.205,
+        0.69,
+        0.85
+      ]
+    },
+    "papas_carne": {
+      "crop": [
+        0.122,
+        0.236,
+        0.878,
+        0.778
+      ]
+    },
+    "papas_chorizo": {
+      "crop": [
+        0.189,
+        0.209,
+        0.811,
+        0.834
+      ]
+    },
+    "papas_pollo": {
+      "crop": null
+    },
+    "pops_pollo": {
+      "crop": [
+        0.122,
+        0.236,
+        0.878,
+        0.78
+      ]
+    },
+    "tacos": {
+      "crop": [
+        0.122,
+        0.236,
+        0.878,
+        0.78
+      ]
+    },
+    "torre_tacos": {
+      "crop": null
+    }
+  },
+  "migracion": {
+    "arroz_mariscos": {
+      "crop": [
+        0.0,
+        0.322,
+        1.0,
+        1.0
+      ]
+    },
+    "ceviche_panceta": {
+      "crop": [
+        0.0,
+        0.329,
+        1.0,
+        1.0
+      ]
+    },
+    "roll": {
+      "crop": [
+        0.0,
+        0.161,
+        1.0,
+        0.775
+      ]
+    },
+    "avocado": {
+      "crop": [
+        0.083,
+        0.253,
+        0.854,
+        0.83
+      ]
+    },
+    "sanguche": {
+      "crop": [
+        0.0,
+        0.41,
+        1.0,
+        0.828
+      ]
+    },
+    "ceviche": {
+      "crop": null
+    },
+    "chilcano_atigrado": {
+      "crop": null
+    },
+    "papas_huancaina": {
+      "crop": null
+    }
+  },
+  "gallina": {
+    "canastas_rellenas": {
+      "crop": null
+    },
+    "lomo_y_pure": {
+      "crop": null
+    },
+    "pescado": {
+      "crop": null
+    },
+    "platano_con_queso": {
+      "crop": null
+    },
+    "guisao_y_arroz_con_cafe": {
+      "crop": null
+    },
+    "canastas_rellenas_2": {
+      "crop": null
+    },
+    "bocadillo_con_queso_y_cafe": {
+      "crop": null
+    }
+  }
+}

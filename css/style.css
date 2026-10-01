@@ -61,13 +61,13 @@ button { font-family: inherit; cursor: pointer; }
 
 .home-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 140px 24px 100px;
+  padding: 132px 24px 96px;
   background: #050303;
   overflow: hidden;
 }
@@ -117,7 +117,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero-eyebrow {
   position: relative;
   z-index: 2;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.38em;
@@ -129,36 +129,122 @@ button { font-family: inherit; cursor: pointer; }
   position: relative;
   z-index: 2;
   font-family: 'Clash Display', 'General Sans', -apple-system, sans-serif;
-  font-size: clamp(56px, 11vw, 138px);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 0.92;
+  font-size: clamp(18px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1;
   text-transform: uppercase;
-  color: #fdfdfc;
+  color: rgba(253,253,252,.78);
   text-shadow:
     0 2px 3px rgba(0,0,0,.55),
-    0 10px 26px rgba(0,0,0,.5),
-    0 0 40px rgba(255,255,255,.14);
+    0 10px 26px rgba(0,0,0,.45),
+    0 0 24px rgba(255,255,255,.1);
 }
 
-.brand-sub {
+.hero-statement {
   position: relative;
   z-index: 2;
-  margin-top: 26px;
-  font-size: clamp(12px, 1.6vw, 15px);
-  letter-spacing: 0.42em;
+  width: min(100%, 1080px);
+  margin: 30px auto 0;
+  font-family: 'Clash Display', 'General Sans', -apple-system, sans-serif;
+  font-size: clamp(30px, 4.5vw, 62px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #fffaf0;
+  text-wrap: balance;
+  text-shadow:
+    0 3px 8px rgba(0,0,0,.45),
+    0 24px 80px rgba(0,0,0,.6);
+  animation: statement-reveal 1s var(--ease) both .55s;
+}
+
+.hero-statement .accent {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-statement .accent::after {
+  content: "";
+  position: absolute;
+  left: .02em;
+  right: .02em;
+  bottom: .05em;
+  z-index: -1;
+  height: .16em;
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: .92;
+  animation: accent-brush .75s var(--ease) forwards 1.05s;
+}
+
+.accent--migracion::after { background: linear-gradient(90deg, rgba(179,35,28,.88), rgba(179,35,28,.28)); }
+.accent--malavida::after { background: linear-gradient(90deg, rgba(124,31,209,.9), rgba(242,183,5,.34)); animation-delay: 1.18s; }
+.accent--gallina::after { background: linear-gradient(90deg, rgba(163,90,30,.88), rgba(243,228,193,.38)); animation-delay: 1.31s; }
+.accent--gold::after { background: linear-gradient(90deg, rgba(245,196,20,.92), rgba(245,196,20,.3)); animation-delay: 1.44s; }
+
+.hero-kicker {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 680px);
+  margin: 24px auto 0;
+  font-size: clamp(15px, 1.75vw, 22px);
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.6);
-  font-weight: 400;
+  color: rgba(255,250,240,.72);
+  text-wrap: balance;
+  animation: reveal-up .8s var(--ease) both .9s;
+}
+
+.hero-kicker .accent {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+}
+
+.home-rail {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 12px 10px;
+  border-right: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.46);
+  mix-blend-mode: difference;
+  animation: rail-in .9s var(--ease) both 1.25s;
+}
+
+.home-rail a {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  transition: color .25s var(--ease), transform .25s var(--ease);
+}
+
+.home-rail a:hover {
+  color: #fff;
+  transform: translateX(-4px);
 }
 
 .tri-bar {
   position: relative;
   z-index: 2;
   display: flex;
-  width: min(100%, 560px);
+  width: min(100%, 620px);
   height: 3px;
-  margin: 60px auto 0;
+  margin: 54px auto 0;
   border-radius: 999px;
   overflow: hidden;
   box-shadow: 0 0 24px rgba(255,255,255,.1);
@@ -221,6 +307,18 @@ button { font-family: inherit; cursor: pointer; }
   from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
   to   { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
+@keyframes statement-reveal {
+  from { opacity: 0; transform: translateY(20px) scale(.98); filter: blur(10px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes accent-brush {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes rail-in {
+  from { opacity: 0; transform: translate(12px, -50%); }
+  to   { opacity: 1; transform: translate(0, -50%); }
+}
 @keyframes tri-reveal {
   from { opacity: 0; transform: scaleX(0); }
   to   { opacity: 1; transform: scaleX(1); }
@@ -241,7 +339,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hero-eyebrow    { animation: reveal-up .8s var(--ease) both .55s; }
 .brand-mark      { transform-origin: center; animation: mark-reveal 1.15s var(--ease) both .15s; }
-.brand-sub       { animation: reveal-up .8s var(--ease) both .95s; }
 .tri-bar         { transform-origin: center; animation: tri-reveal .9s var(--ease) both 1.15s; }
 .hero-scroll-cue { animation: reveal-up .8s var(--ease) both 1.5s; }
 
@@ -251,7 +348,11 @@ button { font-family: inherit; cursor: pointer; }
   .hero-sweep,
   .hero-eyebrow,
   .brand-mark,
-  .brand-sub,
+  .hero-statement,
+  .hero-kicker,
+  .hero-statement .accent::after,
+  .hero-kicker .accent::after,
+  .home-rail,
   .tri-bar,
   .hero-scroll-cue,
   .hero-scroll-cue svg,
@@ -262,7 +363,10 @@ button { font-family: inherit; cursor: pointer; }
   .menu-header-name,
   .menu-header-tag,
   .menu-header-rule,
-  .menu-jump-wrap {
+  .menu-jump-wrap,
+  .collage-eyebrow,
+  .collage-title,
+  .collage-photo {
     animation: none;
     opacity: 1;
     transform: none;
@@ -295,7 +399,7 @@ button { font-family: inherit; cursor: pointer; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  padding: 64px 24px 140px;
+  padding: 76px 24px 140px;
   max-width: 1180px;
   margin: 0 auto;
 }
@@ -546,6 +650,161 @@ button { font-family: inherit; cursor: pointer; }
   animation: reveal-up .8s var(--ease) both .9s;
 }
 
+/* ============================================================
+   Collage previo a la carta — filas justificadas SIN recorte.
+   Cada foto declara su proporción real con style="--r: ancho/alto".
+   En una fila, cada foto crece en proporción a --r, así todas quedan
+   a la misma altura y ninguna se recorta (object-fit: cover sobre
+   una caja con la MISMA proporción que la imagen = 0 px perdidos).
+   ============================================================ */
+.restaurant-collage {
+  position: relative;
+  padding: clamp(72px, 8vw, 112px) 24px clamp(34px, 5vw, 58px);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 72% 38% at 50% 0%, var(--page-accent-soft), transparent 68%),
+    var(--page-bg);
+}
+.collage-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+.collage-heading { text-align: center; }
+.collage-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+  animation: reveal-up .8s var(--ease) both .05s;
+}
+.collage-title {
+  margin-top: 12px;
+  font-family: 'Clash Display', 'General Sans', -apple-system, sans-serif;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--page-text);
+  animation: reveal-up .8s var(--ease) both .16s;
+}
+.collage-lead {
+  max-width: 560px;
+  margin: 14px auto 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--page-text-soft);
+  animation: reveal-up .8s var(--ease) both .24s;
+}
+
+.collage-grid {
+  --collage-gap: clamp(8px, 1.1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--collage-gap);
+  margin-top: clamp(32px, 4.5vw, 52px);
+}
+.collage-row {
+  --row-max-h: 420px;
+  display: flex;
+  gap: var(--collage-gap);
+  width: 100%;
+  /* Evita filas gigantes cuando hay pocas fotos verticales: alto máximo ≈ --row-max-h */
+  max-width: calc(var(--sum, 99) * var(--row-max-h));
+  margin-inline: auto;
+}
+.collage-photo {
+  --r: 1;
+  position: relative;
+  flex: var(--r) 1 0;
+  aspect-ratio: var(--r);
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--page-rule);
+  box-shadow: 0 18px 44px -22px rgba(0,0,0,.45);
+  isolation: isolate;
+  animation: reveal-up .9s var(--ease) both;
+}
+.collage-row:nth-child(1) .collage-photo:nth-child(1) { animation-delay: .25s; }
+.collage-row:nth-child(1) .collage-photo:nth-child(2) { animation-delay: .32s; }
+.collage-row:nth-child(1) .collage-photo:nth-child(3) { animation-delay: .39s; }
+.collage-row:nth-child(2) .collage-photo:nth-child(1) { animation-delay: .46s; }
+.collage-row:nth-child(2) .collage-photo:nth-child(2) { animation-delay: .53s; }
+.collage-row:nth-child(2) .collage-photo:nth-child(3) { animation-delay: .6s; }
+.collage-row:nth-child(2) .collage-photo:nth-child(4) { animation-delay: .67s; }
+.collage-row:nth-child(1) .collage-photo:nth-child(4) { animation-delay: .46s; }
+.collage-row:nth-child(3) .collage-photo { animation-delay: .7s; }
+
+.collage-photo picture { display: block; width: 100%; height: 100%; }
+.collage-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease), filter .7s var(--ease);
+}
+@media (hover: hover) {
+  .collage-photo:hover img { transform: scale(1.03); filter: saturate(1.06); }
+}
+.collage-photo figcaption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 2;
+  max-width: calc(100% - 20px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(15, 10, 10, .62);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Espacios reservados (La Gran Gallina hasta tener fotos) */
+.collage-photo--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-shadow: none;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 40%, var(--page-accent-soft), transparent 70%),
+    color-mix(in srgb, var(--page-rule) 70%, var(--page-bg));
+  border: 1.5px dashed color-mix(in srgb, var(--page-accent) 45%, transparent);
+  color: var(--page-text-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Móvil: dos columnas tipo mosaico, cada foto en su proporción real */
+@media (max-width: 640px) {
+  .restaurant-collage { padding: 64px 16px 30px; }
+  .collage-grid { display: block; columns: 2; column-gap: 8px; margin-top: 30px; }
+  .collage-row { display: contents; }
+  .collage-photo {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    break-inside: avoid;
+    border-radius: 10px;
+  }
+  .collage-photo--empty { display: flex; }
+  .collage-photo figcaption { left: 6px; bottom: 6px; padding: 4px 9px; font-size: 10.5px; }
+}
+
 .menu-body { padding: 90px 24px 140px; }
 .menu-body-inner { max-width: 920px; margin: 0 auto; }
 
@@ -717,13 +976,31 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 860px) {
   .brand-grid { grid-template-columns: 1fr; padding: 48px 20px 100px; }
   .menu-items { grid-template-columns: 1fr; }
-  .home-hero { padding-top: 120px; }
+  .home-hero { min-height: 88vh; padding-top: 112px; }
+  .home-rail { display: none; }
   .cta-dock { flex-direction: column; }
   .back-home, .cta-btn { padding: 10px 16px; font-size: 12px; }
 }
 
 @media (max-width: 520px) {
-  .brand-mark { letter-spacing: -0.02em; }
+  .brand-mark { font-size: 16px; letter-spacing: .14em; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: .28em; }
+  .hero-statement {
+    font-size: clamp(34px, 11vw, 52px);
+    line-height: 1.02;
+  }
+  .hero-statement .accent { white-space: normal; }
+  .hero-kicker {
+    margin-top: 20px;
+    font-size: 13px;
+    letter-spacing: .12em;
+  }
+  .tri-bar { margin-top: 42px; }
+  .collage-title { font-size: clamp(30px, 12vw, 44px); }
   .menu-header { padding: 130px 18px 54px; }
   .menu-body { padding: 60px 18px 100px; }
 }
+
+/* Foto del lugar de La Gran Gallina es 3:2 — el bloque usa esa proporción para mostrarla completa */
+.theme-gallina .location-map,
+.theme-gallina .location-photo { aspect-ratio: 3 / 2; }
